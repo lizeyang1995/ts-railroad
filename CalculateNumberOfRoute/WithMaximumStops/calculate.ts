@@ -1,25 +1,25 @@
 import parsedGraphs from "../../graph";
 
-let numberOfMethods: number = 0
+let numberOfMethodsWithMaximumStops: number = 0
+let resultRoute: Array<string> = []
 function calculateNumberOfRouteWithMaximumStops(startPoint: string, endPoint: string): void {
-    let resultMethods: Array<string> = []
     parsedGraphs.some((graph) => {
         if (graph.startPoint === startPoint) {
-            resultMethods.push(graph.startPoint)
+            resultRoute.push(graph.startPoint)
             if (graph.endPoint === endPoint) {
-                resultMethods.push(graph.endPoint)
-                if (resultMethods.length <= 4) {
-                    numberOfMethods++
+                resultRoute.push(graph.endPoint)
+                if (resultRoute.length <= 4) {
+                    numberOfMethodsWithMaximumStops++
                 }
-                resultMethods = resultMethods.slice(0, resultMethods.length - 2)
+                resultRoute = resultRoute.slice(0, resultRoute.length - 2)
                 return true
             }
             calculateNumberOfRouteWithMaximumStops(graph.endPoint, endPoint)
         }
     })
-    if (resultMethods.length > 0) {
-        resultMethods.pop()
+    if (resultRoute.length > 0) {
+        resultRoute.pop()
     }
 }
 
-export { calculateNumberOfRouteWithMaximumStops, numberOfMethods } 
+export { calculateNumberOfRouteWithMaximumStops, numberOfMethodsWithMaximumStops } 
