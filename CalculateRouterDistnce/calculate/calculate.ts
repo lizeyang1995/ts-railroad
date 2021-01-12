@@ -1,7 +1,7 @@
 import parsedGraphs from "../graph"
 
-function claculate(route: string): void {
-    const splitedRoute = route.split(" ")
+function calculateDistance(route: string): void {
+    const splitedRoute = route.split("-")
     const numberOfStops = splitedRoute.length - 1
     let distanceBetweenTwoPoints = 0
     for (let index = 0; index < numberOfStops; index++) {
@@ -19,5 +19,7 @@ function claculate(route: string): void {
             return;
         }
     }
-    console.log(distanceBetweenTwoPoints);
+    console.log(`The distance of the route ${route}: ${distanceBetweenTwoPoints}`);
 }
+
+export default calculateDistance
