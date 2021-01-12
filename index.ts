@@ -1,3 +1,3 @@
-import calculateDistance from './CalculateRouterDistnce/calculate/calculate'
+import calculateDistance from './CalculateRouterDistnce/calculate'
 
 calculateDistance("A-B-C")
