@@ -1,6 +1,6 @@
 import parsedGraphs from "../graph"
 
-function calculateDistance(route: string): number {
+function calculateDistance(route: string): number | string {
     const splitedRoute = route.split("-")
     const numberOfStops = splitedRoute.length - 1
     let distanceBetweenTwoPoints = 0
@@ -15,8 +15,7 @@ function calculateDistance(route: string): number {
                 }
         })
         if (!findRoute) {
-            console.log("no such route");
-            return;
+            return "no such route";
         }
     }
     return distanceBetweenTwoPoints
