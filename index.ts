@@ -1,3 +1,8 @@
-import calculateDistance from './CalculateRouterDistnce/calculate'
+import { calculateNumberOfRouteWithMaximumStops, numberOfMethods } from './CalculateNumberOfRoute/WithMaximumStops/calculate'
+import calculateDistance from './CalculateRouteDistnce/calculate'
 
-calculateDistance("A-B-C")
+const distanceBetweenTwoPoints = calculateDistance("A-B-C")
+console.log(`The distance of the route A-B-C: ${distanceBetweenTwoPoints}`);
+
+calculateNumberOfRouteWithMaximumStops("C", "C")
+console.log(`the number of methohs: ${numberOfMethods}`);
