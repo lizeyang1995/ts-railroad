@@ -1,9 +1,6 @@
 import parsedGraphs from "../graph"
 
-const lengthOfEveryRoute: Array<number> = []
-let resultRoute: Array<string> = []
-let lengthOfOneRoute: number = 0
-function calculateTheShortestRoute(startPoint: string, endPoint: string) {
+function calculateTheShortestRoute(startPoint: string, endPoint: string, lengthOfEveryRoute: Array<number>, resultRoute: Array<string>, lengthOfOneRoute: number): Array<number> {
     if (resultRoute.indexOf(startPoint) >= 0) {
         resultRoute.pop()
         return
@@ -19,13 +16,14 @@ function calculateTheShortestRoute(startPoint: string, endPoint: string) {
                 lengthOfOneRoute -= graph.distance
                 return true
             }
-            calculateTheShortestRoute(graph.endPoint, endPoint)
+            calculateTheShortestRoute(graph.endPoint, endPoint, lengthOfEveryRoute, resultRoute, lengthOfOneRoute)
             lengthOfOneRoute -= graph.distance
         }
     })
     if (resultRoute.length > 0) {
         resultRoute.pop()
     }
+    return lengthOfEveryRoute
 }
 
-export { calculateTheShortestRoute, lengthOfEveryRoute }
+export { calculateTheShortestRoute }

@@ -1,15 +1,15 @@
-import { calculateTheShortestRoute, lengthOfEveryRoute } from "../../src/CalculateTheShortestRoute/calculate"
+import { calculateTheShortestRoute,  } from "../../src/CalculateTheShortestRoute/calculate"
 
 test("calculate the shortest route", () => {
-    calculateTheShortestRoute("A", "C")
-    expect(9).toEqual(Math.min(...lengthOfEveryRoute))
+    let lengthOfEveryRoute = calculateTheShortestRoute("A", "C", [], [], 0)
+    expect(Math.min(...lengthOfEveryRoute)).toEqual(9)
+    
+    lengthOfEveryRoute = calculateTheShortestRoute("A", "D", [], [], 0)
+    expect(Math.min(...lengthOfEveryRoute)).toEqual(5)
 
-    calculateTheShortestRoute("B", "B")
-    expect(9).toEqual(Math.min(...lengthOfEveryRoute))
+    lengthOfEveryRoute = calculateTheShortestRoute("B", "B", [], [], 0)
+    expect(Math.min(...lengthOfEveryRoute)).toEqual(9)
 
-    calculateTheShortestRoute("C", "B")
-    expect(5).toEqual(Math.min(...lengthOfEveryRoute))
-
-    calculateTheShortestRoute("A", "D")
-    expect(5).toEqual(Math.min(...lengthOfEveryRoute))
+    lengthOfEveryRoute = calculateTheShortestRoute("C", "B", [], [], 0)
+    expect(Math.min(...lengthOfEveryRoute)).toEqual(5)
 })
