@@ -3,6 +3,7 @@ import parsedGraphs from "../../graph";
 let resultRoute: Array<string> = []
 function calculateNumberOfRouteWithMaximumStops(maximumStops: number, startPoint: string, endPoint: string, numberOfMethods: number): number {
     if (resultRoute.length > 4) {
+        resultRoute.pop()
         return numberOfMethods
     }
     parsedGraphs.some((graph) => {
@@ -12,7 +13,6 @@ function calculateNumberOfRouteWithMaximumStops(maximumStops: number, startPoint
                 resultRoute.push(graph.endPoint)
                 if (resultRoute.length <= maximumStops + 1) {
                     numberOfMethods++
-                    console.log("resultRoute:", resultRoute);
                 }
                 resultRoute = resultRoute.slice(0, resultRoute.length - 2)
                 if (resultRoute.length != 0) {
