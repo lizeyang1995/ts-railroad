@@ -1,5 +1,5 @@
 import { calculateNumberOfRouteWithExactlyStops } from './CalculateNumberOfRoute/WithExactlyStops/calculate';
-import { calculateNumberOfRouteWithMaximumDistance, numberOfMethodsWithMaximumDistance } from './CalculateNumberOfRoute/WithMaximumDistance/calculate';
+import { calculateNumberOfRouteWithMaximumDistance } from './CalculateNumberOfRoute/WithMaximumDistance/calculate';
 import { calculateNumberOfRouteWithMaximumStops } from './CalculateNumberOfRoute/WithMaximumStops/calculate'
 import calculateDistance from './CalculateRouteDistnce/calculate'
 import { calculateTheShortestRoute } from './CalculateTheShortestRoute/calculate';
@@ -13,7 +13,7 @@ console.log(`the number of methohs with maximum stops: ${numberOfMethodsWithMaxi
 const numberOfMethodsWithExactlyStops = calculateNumberOfRouteWithExactlyStops(4, "A", "C", 0)
 console.log(`the number of methohs with exactly stops: ${numberOfMethodsWithExactlyStops}`);
 
-calculateNumberOfRouteWithMaximumDistance(30, "C", "C")
+const numberOfMethodsWithMaximumDistance = calculateNumberOfRouteWithMaximumDistance(30, "C", "C", 0)
 console.log(`the number of methohs with maximum distance: ${numberOfMethodsWithMaximumDistance}`);
 
 const lengthOfEveryRoute = calculateTheShortestRoute("A", "C", [], [], 0)

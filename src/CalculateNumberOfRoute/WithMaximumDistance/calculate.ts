@@ -1,30 +1,19 @@
 import parsedGraphs, { IGraph } from "../../graph";
 
 let lengthOfOneRoute: number = 0
-let numberOfMethodsWithMaximumDistance: number = 0
-let resultRoute: Array<string> = []
-function calculateNumberOfRouteWithMaximumDistance(maximumDistance: number, startPoint: string, endPoint: string) {
+function calculateNumberOfRouteWithMaximumDistance(maximumDistance: number, startPoint: string, endPoint: string, numberOfMethodsWithMaximumDistance: number): number {
     parsedGraphs.some((graph) => {
         if (isEqual(graph.startPoint, startPoint) && isDistanceRemaining(maximumDistance, graph)) {
-            resultRoute.push(graph.startPoint)
             lengthOfOneRoute += graph.distance
             if (isEqual(graph.endPoint, endPoint)) {
-                resultRoute.push(graph.endPoint)
-                console.log(resultRoute);
                 numberOfMethodsWithMaximumDistance++
-                if (isDistanceRemaining(maximumDistance)) {
-                    resultRoute.pop()
-                    calculateNumberOfRouteWithMaximumDistance(maximumDistance, graph.endPoint, endPoint)
-                }
-                resultRoute.pop()
-                lengthOfOneRoute -= graph.distance
-                return true
+                numberOfMethodsWithMaximumDistance += calculateNumberOfRouteWithMaximumDistance(maximumDistance, graph.endPoint, endPoint, numberOfMethodsWithMaximumDistance)
+            } else {
+                numberOfMethodsWithMaximumDistance += calculateNumberOfRouteWithMaximumDistance(maximumDistance, graph.endPoint, endPoint, numberOfMethodsWithMaximumDistance)
             }
-            calculateNumberOfRouteWithMaximumDistance(maximumDistance, graph.endPoint, endPoint)
-            resultRoute.pop()
-            lengthOfOneRoute -= graph.distance
         }
     })
+    return numberOfMethodsWithMaximumDistance
 }
 
 function isEqual(presentPoint: string, targetPoint: string): boolean {
@@ -38,4 +27,4 @@ function isDistanceRemaining(maximumDistance: number, graph?: IGraph): boolean {
     return lengthOfOneRoute < maximumDistance
 }
 
-export { calculateNumberOfRouteWithMaximumDistance, numberOfMethodsWithMaximumDistance }
+export { calculateNumberOfRouteWithMaximumDistance }
